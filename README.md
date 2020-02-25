@@ -1,2 +1,2 @@
-# quarto
+# Quarto
 Quarto Classic Game
