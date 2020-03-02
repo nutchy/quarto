@@ -8,7 +8,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from './components/HelloWorld.vue'
 import Board from './components/Board.vue'
-import { Color } from './types/index'
+import { Color, Piece } from './types/index'
 import { initialPieces } from './utils'
 
 @Component({
@@ -19,7 +19,7 @@ import { initialPieces } from './utils'
 })
 export default class App extends Vue {
   mounted() {
-    const pieces = initialPieces()
+    const pieces: Piece[] = initialPieces()
     console.log(pieces)
   }
 }

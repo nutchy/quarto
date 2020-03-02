@@ -1,3 +1,10 @@
+enum Category {
+  Color = 'COLOR',
+  BodyShape = 'BODY_SHAPE',
+  Height = 'HEIGHT',
+  HeadShape = 'HEAD_SHAPE',
+}
+
 enum Color {
   Light = 'LIGHT',
   Dark = 'DARK',
@@ -18,6 +25,11 @@ enum HeadShape {
   Solid = 'Solid',
 }
 
+interface WinningRule {
+  type: Color | BodyShape | Height | HeadShape,
+  category: Category
+}
+
 interface Piece {
   color: Color;
   body: BodyShape;
@@ -25,4 +37,4 @@ interface Piece {
   height: Height;
 }
 
-export { Color, BodyShape, Height, HeadShape, Piece }
+export { Color, BodyShape, Height, HeadShape, Piece, WinningRule, Category }
