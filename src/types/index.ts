@@ -27,7 +27,7 @@ enum HeadShape {
 
 interface QuartoRule {
   type: Color | BodyShape | Height | HeadShape,
-  category: Category
+  category: "body" |  "color" | "head" | "height"
 }
 
 interface Piece {

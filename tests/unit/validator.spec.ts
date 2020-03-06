@@ -1,4 +1,4 @@
-import { isQuartoByHeadShape, isQuartoByBodyShape, isQuartoByHeight, isQuartoByColor, isSubsetOfArray } from './../../src/utils/validator'
+import { isQuartoByRule, isSubsetOfArray } from './../../src/utils/validator'
 import { createPiece } from './../../src/utils'
 import { Color, BodyShape, HeadShape, Height, ISelecetedPiece } from '@/types'
 
@@ -10,16 +10,16 @@ describe('Should return true for ', () => {
       '02': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Tall),
       '03': createPiece(Color.Light, HeadShape.Solid, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByColor(pieces, Color.Light)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "color", type: Color.Light})).toBeTruthy();
   })
-  it('isQuartoByColor - Dark', () => {
+  it('isQuartoByRule - Dark', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Short),
       '02': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Tall),
       '03': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByColor(pieces, Color.Dark)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "color", type: Color.Dark})).toBeTruthy();
   })
   it('isQuartoByHeadShape - Head(Hollow)', () => {
     const pieces: ISelecetedPiece = {
@@ -28,52 +28,52 @@ describe('Should return true for ', () => {
       '02': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Tall),
       '03': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByHeadShape(pieces, HeadShape.Hollow)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "head", type: HeadShape.Hollow})).toBeTruthy();
   })
-  it('isQuartoByHeadShape - Head(Solid)', () => {
+  it('isQuartoByRule - Head(Solid)', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Light, HeadShape.Solid, BodyShape.Square, Height.Short),
       '02': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Tall),
       '03': createPiece(Color.Light, HeadShape.Solid, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByHeadShape(pieces, HeadShape.Solid)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "head", type: HeadShape.Solid})).toBeTruthy();
   })
-  it('isQuartoByBodyShape - Body(Round)', () => {
+  it('isQuartoByRule - Body(Round)', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
       '02': createPiece(Color.Light, HeadShape.Solid, BodyShape.Round, Height.Tall),
       '03': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByBodyShape(pieces, BodyShape.Round)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "body", type: BodyShape.Round})).toBeTruthy();
   })
-  it('isQuartoByBodyShape - Body(Square)', () => {
+  it('isQuartoByRule - Body(Square)', () => {
     const pieces: ISelecetedPiece = {
       '30': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Short),
       '21': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Square, Height.Short),
       '12': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Tall),
       '03': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Square, Height.Short),
     }
-    expect(isQuartoByBodyShape(pieces, BodyShape.Square)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "body", type: BodyShape.Square})).toBeTruthy();
   })
-  it('isQuartoByHeight - Height(Short)', () => {
+  it('isQuartoByRule - Height(Short)', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
       '02': createPiece(Color.Light, HeadShape.Solid, BodyShape.Round, Height.Short),
       '03': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByHeight(pieces, Height.Short)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "height", type: Height.Short})).toBeTruthy();
   })
-  it('isQuartoByHeight - Height(Tall)', () => {
+  it('isQuartoByRule - Height(Tall)', () => {
     const pieces: ISelecetedPiece = {
       '30': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Tall),
       '21': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Square, Height.Tall),
       '12': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Tall),
       '03': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Square, Height.Tall),
     }
-    expect(isQuartoByHeight(pieces, Height.Tall)).toBeTruthy();
+    expect(isQuartoByRule(pieces, {category: "height", type: Height.Tall})).toBeTruthy();
   })
 
   it('should return false', () => {
