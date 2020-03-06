@@ -17,3 +17,6 @@ export const initialPieces = (): Piece[] => {
   })
   return pieces
 }
+
+export const createPiece = (color: Color, head: HeadShape, body: BodyShape, height: Height): Piece =>
+  ({ color, head, body, height })

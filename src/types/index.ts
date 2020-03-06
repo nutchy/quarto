@@ -25,16 +25,20 @@ enum HeadShape {
   Solid = 'Solid',
 }
 
-interface WinningRule {
+interface QuartoRule {
   type: Color | BodyShape | Height | HeadShape,
   category: Category
 }
 
 interface Piece {
-  color: Color;
-  body: BodyShape;
-  head: HeadShape;
-  height: Height;
+  color: Color | null;
+  body: BodyShape | null;
+  head: HeadShape | null;
+  height: Height | null;
 }
 
-export { Color, BodyShape, Height, HeadShape, Piece, WinningRule, Category }
+interface ISelecetedPiece {
+  [position: string]: Piece
+}
+
+export { Color, BodyShape, Height, HeadShape, Piece, QuartoRule, Category, ISelecetedPiece }
