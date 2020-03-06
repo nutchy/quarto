@@ -4,7 +4,7 @@ import { Color, BodyShape, HeadShape, Height, ISelecetedPiece } from '@/types'
 import { isQuartoByColor, isSubsetOfArray } from '../../src/utils/validator'
 
 describe('Should return true for ', () => {
-  it('renders props.msg when passed', () => {
+  it('isQuartoByColor - Light', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Light, HeadShape.Solid, BodyShape.Square, Height.Short),
@@ -13,16 +13,16 @@ describe('Should return true for ', () => {
     }
     expect(isQuartoByColor(pieces, Color.Light)).toBeTruthy();
   })
-  it('renders props.msg when passed', () => {
+  it('isQuartoByColor - Dark', () => {
     const pieces: ISelecetedPiece = {
-      '00': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Short),
-      '01': createPiece(Color.Light, HeadShape.Solid, BodyShape.Square, Height.Short),
+      '00': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Short),
+      '01': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Square, Height.Short),
       '02': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Round, Height.Tall),
-      '03': createPiece(Color.Light, HeadShape.Solid, BodyShape.Round, Height.Short),
+      '03': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
     }
-    expect(isQuartoByColor(pieces, Color.Light)).toBeFalsy();
+    expect(isQuartoByColor(pieces, Color.Dark)).toBeTruthy();
   })
-  it('renders props.msg when passed', () => {
+  it('isQuartoByHeadShape - Head(Hollow)', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Light, HeadShape.Hollow, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Dark, HeadShape.Hollow, BodyShape.Square, Height.Short),
@@ -31,7 +31,7 @@ describe('Should return true for ', () => {
     }
     expect(isQuartoByHeadShape(pieces, HeadShape.Hollow)).toBeTruthy();
   })
-  it('renders props.msg when passed', () => {
+  it('isQuartoByHeadShape - Head(Solid)', () => {
     const pieces: ISelecetedPiece = {
       '00': createPiece(Color.Dark, HeadShape.Solid, BodyShape.Round, Height.Short),
       '01': createPiece(Color.Light, HeadShape.Solid, BodyShape.Square, Height.Short),
